@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Internet According to Oz</title>
+<style>
+:root{
+  --navy:#253a54;
+  --navy2:#324b69;
+  --ink:#203047;
+  --muted:#667892;
+  --line:#d7deea;
+  --paper:#eef2f8;
+  --soft:#f3f5fb;
+  --white:#ffffff;
+  --blue:#4e86d8;
+  --green:#34a06e;
+  --red:#df5a4f;
+  --gold:#efc24f;
+  --purple:#8f79d8;
+  --shadow:0 12px 30px rgba(33,53,82,.10);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at top left, #f7dfe5 0, #f7dfe5 14%, transparent 15%),
+    linear-gradient(180deg,#f5f0f6 0%, #eef3f8 32%, #edf2f8 100%);
+  color:var(--ink);
+  font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+main{max-width:1180px;margin:auto;padding:22px}
+header{
+  display:flex;justify-content:space-between;gap:20px;align-items:center;
+  background:var(--navy);
+  color:white;
+  padding:18px 22px;
+  border-radius:22px;
+  box-shadow:var(--shadow);
+  margin-bottom:16px;
+}
+.brand{display:flex;align-items:center;gap:16px}
+.logo{
+  width:62px;height:62px;border-radius:16px;background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--red);font-size:30px;font-weight:900;
+  box-shadow:inset 0 0 0 2px rgba(0,0,0,.05);overflow:hidden
+}
+.logo img{width:100%;height:100%;object-fit:cover;display:block}
+h1{font-size:34px;letter-spacing:-1px;margin:0;color:white;line-height:1}
+h2{font-size:29px;line-height:1.15;margin:0 0 14px;color:var(--navy)}
+h3{margin:22px 0 10px;color:var(--navy2)}
+p{margin:8px 0 16px}
+.muted{color:#d8e0ed}
+.subtitle{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#dbe3f0;font-weight:700}
+.tag{
+  display:inline-block;
+  font-size:12px;text-transform:uppercase;letter-spacing:.14em;
+  color:white;background:var(--purple);font-weight:800;
+  padding:7px 12px;border-radius:999px;margin-bottom:14px
+}
+.card{
+  background:rgba(255,255,255,.96);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:var(--shadow)
+}
+.note{
+  background:linear-gradient(180deg,#eef4ff 0%, #f6f8ff 100%);
+  border:1px solid #d6e2fb;
+  border-radius:16px;padding:14px 16px;margin:16px 0
+}
+.paper{
+  background:#fffdf5;
+  border:2px dashed #e0c86d;
+  border-radius:16px;padding:16px;margin:16px 0
+}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+nav button{
+  border:0;border-radius:14px;padding:10px 14px;
+  color:white;font-size:12px;font-weight:800;
+  box-shadow:0 4px 0 rgba(0,0,0,.10);
+  cursor:pointer
+}
+nav button:nth-child(6n+1){background:var(--green)}
+nav button:nth-child(6n+2){background:var(--red)}
+nav button:nth-child(6n+3){background:var(--blue)}
+nav button:nth-child(6n+4){background:var(--gold);color:#483200}
+nav button:nth-child(6n+5){background:var(--purple)}
+nav button:nth-child(6n+6){background:#5f6f89}
+nav button[aria-current="step"]{
+  outline:3px solid #1d2d44;
+  transform:translateY(1px)
+}
+button,a.launch{
+  border:0;border-radius:14px;background:var(--blue);color:white;
+  padding:11px 16px;font-weight:800;text-decoration:none;display:inline-block;cursor:pointer;
+  box-shadow:0 4px 0 rgba(0,0,0,.12)
+}
+button.secondary{background:#e7edf6;color:var(--ink);box-shadow:none}
+button:disabled{opacity:.45;cursor:not-allowed}
+textarea,input,select{
+  font:inherit;border:1px solid #b8c5d8;border-radius:12px;padding:10px 12px;
+  background:#fbfcff;color:var(--ink)
+}
+textarea,input{width:100%}
+select{width:100%}
+textarea{min-height:95px;resize:vertical}
+textarea:focus,input:focus,select:focus{
+  outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(78,134,216,.18)
+}
+label{display:block;font-weight:750;margin:18px 0 7px}
+.footer{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  margin-top:26px;flex-wrap:wrap;padding-top:6px
+}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.diagram{
+  background:linear-gradient(180deg,#f8fbff 0%, #f3f7fd 100%);
+  border:1px solid var(--line);border-radius:18px;padding:20px;margin:16px 0
+}
+.flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;text-align:center}
+.node{
+  background:white;border:2px solid #b8c6db;border-radius:14px;padding:12px 14px;
+  min-width:112px;font-weight:800;box-shadow:0 3px 0 rgba(0,0,0,.05)
+}
+.arrow{font-size:24px;color:var(--muted)}
+.prompt{
+  border-left:6px solid var(--purple);
+  background:#faf7ff;
+  border-radius:12px;
+  padding:14px 16px;margin:18px 0
+}
+.checks label{
+  font-weight:500;margin:8px 0;background:#f7f9fd;border:1px solid #e2e8f2;
+  border-radius:12px;padding:10px 12px
+}
+.checks input{width:auto;margin-right:8px}
+.explore{border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0}
+.explore h3{margin-top:0}
+.badge{
+  display:inline-block;background:var(--gold);color:#4a3800;
+  padding:5px 10px;border-radius:999px;font-size:12px;font-weight:900
+}
+section[hidden]{display:none}
+.status{
+  font-size:13px;color:#203047;background:#f6fbf8;border-radius:999px;
+  padding:9px 14px;font-weight:800;white-space:nowrap
+}
+@media(max-width:860px){
+  .grid2{grid-template-columns:1fr}
+  main{padding:14px}
+  .card{padding:18px}
+  header{padding:16px;align-items:flex-start}
+  .brand{align-items:flex-start}
+  h1{font-size:30px}
+}
+
+.gate{margin-top:20px;background:#fff7df;border:1px solid #ecd48b;border-radius:16px;padding:16px}
+.gate p{margin:5px 0 12px;color:#6d5a2c}
+.gate-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.gate-row input{flex:1;min-width:190px}
+.gate-feedback{font-size:13px;font-weight:800;margin-top:8px;color:#8b4c00}
+
+</style>
+<style>
+.net{width:100%;max-height:200px}.bits{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0}.bit{font-size:25px;min-width:54px;padding:14px 0;box-shadow:none}.bit.off{background:#cbd4e2;color:#253a54}.bit.on{background:#efc24f;color:#2f270e}.bitread{font-family:monospace;text-align:center;font-size:19px;font-weight:800}.packetrow{display:none;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px 0}.packetrow.visible{display:flex}.mini-packet{min-width:95px;padding:13px;background:#eef4ff;border:2px solid #7aa6e8;border-radius:14px;display:flex;flex-direction:column;gap:2px;align-items:center}.mini-packet small{font-weight:700;color:#5e708b}.mini-packet strong{font-size:23px;color:#253a54}.mini-packet.received{background:#effaf3;border-color:#34a06e}.mini-packet.missing{background:#fff0ed;border:2px dashed #df5a4f}.word{font-size:28px;font-weight:900;letter-spacing:.12em;margin:14px}.softline{font-size:13px;color:#667892;margin:12px 0 0}.anatomy{display:grid;grid-template-columns:1fr 1fr;gap:10px}.anatomy div{border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}.anatomy b{font-size:13px;letter-spacing:.12em}.anatomy span{font-size:20px;font-weight:800}.a-from{background:#e3efff}.a-to{background:#e8f7ee}.a-order{background:#fff2ce}.a-data{background:#efeaff}#routeViz{width:100%;max-height:275px}ol li{margin:10px 0}@media print{nav,.footer,header,.tag,#download,#printBtn{display:none!important}section[hidden]{display:block!important}section{break-after:page}body{background:white}main{max-width:none}.card{box-shadow:none}}
+</style>
+<style>
+.machine-panel{background:#f8faff;border:1px solid #d9e4f1;border-radius:17px;padding:15px}.mini-label{font-size:11px;font-weight:900;letter-spacing:.11em;color:#617696}.terminal{background:#071307;color:#76ff71;border:7px solid #263529;border-radius:13px;min-height:247px;padding:18px;font:17px/1.7 Consolas,"Courier New",monospace;box-shadow:inset 0 0 24px #001300}.terminal-mini{min-height:155px;font-size:15px}.term-green{color:#b7ff86}.term-muted{color:#7dba72;font-size:13px}.cursor{animation:blink 1s step-end infinite}@keyframes blink{50%{opacity:0}}.desktop-preview{min-height:247px;position:relative;overflow:hidden;border:7px solid #a9cde8;border-radius:12px;background:radial-gradient(circle at 80% 80%,#4d83ed,#173b9d 55%,#93c4f1);padding:18px;display:flex;gap:15px}.desktop-icon{color:white;font-size:28px;text-align:center;width:65px;text-shadow:0 1px 2px #183154}.desktop-icon small{display:block;font-size:11px}.fake-window{background:#f4f8ff;box-shadow:0 10px 35px #091c5d77;border-radius:9px;position:absolute;top:66px;left:30%;right:8px;height:140px;color:#264364;overflow:hidden}.fake-windowbar,.editor-bar{background:#dbe7f8;color:#23374f;font-size:13px;font-weight:800;padding:7px 10px;display:flex;justify-content:space-between;gap:6px}.fake-toolbar{padding:7px 10px;font-size:12px;border-bottom:1px solid #bccce2}.fake-folder{padding:10px;font-size:15px}.taskbar{background:#d4dff6cc;position:absolute;bottom:0;left:0;right:0;text-align:center;color:#183c80;font-size:20px}.packetline{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.smallpack{border:2px solid #34a06e;background:#f0fcf4;border-radius:17px;min-width:91px;text-align:center;padding:14px;font-size:12px;font-weight:800;color:#617892}.smallpack strong{font-size:27px;color:#253a54}.smallpack.bad{background:#fff3f1;border:2px dashed #df5a4f}.sim-response{font-size:17px;margin:18px 0;font-weight:800;text-align:center}.topless{margin-top:0}.row-flex{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row-flex input{flex:1;min-width:160px}.row-flex button{white-space:nowrap}.gui-sim{border:1px solid #b5c8e5;background:#fcfdff;border-radius:12px;overflow:hidden;min-height:166px}.small-control{font-size:12px;padding:7px 10px}.gui-folder-placeholder{font-size:15px;margin:18px;color:#587092}.success-strip{border-radius:12px;padding:10px 15px;background:#f2f7ff;font-weight:700;color:#314d70}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}.concept{padding:16px;border-radius:16px;min-width:0}.concept h3{margin:0 0 8px}.concept b{font-size:12px}.concept p{margin:7px 0}.concept code{display:block;overflow-wrap:anywhere;font-size:12px}.concept.html{background:#e7efff}.concept.css{background:#f7edff}.concept.js{background:#fff4d6}.checks-inline{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}.checks-inline label{margin:0;padding:8px 12px;border:1px solid #cad7e8;background:white;border-radius:10px}.checks-inline input,.builder-controls input[type="checkbox"]{width:auto}.site-preview{background:white;border:2px dashed #c6d2e1;border-radius:12px;padding:18px;min-height:175px}.preview-site-head.styled{background:#e5efff;padding:20px;border-radius:14px;color:#264b89;text-align:center}.preview-site-head.styled h3{font-size:25px;color:#264b89}.preview-site-head.styled button{background:#e1b53b;color:#322b00}.editor-bar{background:#dfe7f5;border-radius:10px 10px 0 0}.editor-bar span{font-weight:500}.code-panel{margin:0;background:#17263a;color:#dcf0ff;border-radius:0 0 12px 12px;white-space:pre-wrap;overflow-wrap:anywhere;min-height:230px;padding:18px;font:13px/1.65 Consolas,monospace}.builder-controls{background:#f6f8fc;padding:13px;border:1px solid #d6deea}.builder-controls label{margin:4px 0}.builder-controls input,.builder-controls select{margin-bottom:12px}.builder-live{border-radius:0 0 12px 12px;text-align:center;padding:20px;min-height:160px}.builder-live h3{margin-top:0}.builder-live.blue{background:#e3efff}.builder-live.green{background:#e8f7e7}.builder-live.purple{background:#efe9ff}.journey-list{display:flex;flex-direction:column;gap:10px}.journey-item{display:flex;align-items:center;gap:12px;border:1px solid #cad5e5;background:#f9fbff;border-radius:14px;padding:10px}.journey-number{width:29px;height:29px;flex:none;border-radius:50%;background:#e1ebf7;display:grid;place-items:center;font-weight:900}.journey-label{flex:1;font-weight:650}.journey-controls{display:flex;gap:5px;flex:none}.journey-controls button{box-shadow:none;padding:8px 10px;font-size:16px}.journey-item.correct{border-color:#34a06e;background:#edf9f2}.journey-item.incorrect{border-color:#dcaa92}.site-preview button[disabled]{background:#e1e4e9;color:#667892}.download-blurb{font-size:12px;color:#667892}input[type="checkbox"]{accent-color:#4e86d8}button:focus-visible,a:focus-visible{outline:3px solid #243d61;outline-offset:3px}@media(max-width:800px){.grid3{grid-template-columns:1fr}.terminal{min-height:200px}.desktop-preview{min-height:200px}.journey-item{gap:7px}.journey-label{font-size:14px}}@media print{.checks-inline,.journey-controls,.row-flex button{display:none!important}.journey-item{break-inside:avoid}.terminal{color:#163d16;background:#e9f5e9}section{break-after:page}}
+button[hidden]{display:none!important}#progress{color:#344b6b;font-weight:800}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="brand">
+    <div class="logo">OZ</div>
+    <div>
+      <h1>the internet according to oz</h1>
+      <div class="subtitle">sit. stay. site.</div>
+      <div class="muted">Day 4: Tying It All Together • GUIs, Code &amp; The Web</div>
+    </div>
+  </div>
+  <div class="status" id="saveState">Autosave ready</div>
+</header>
+
+<nav id="nav"></nav>
+
+<div class="card">
+<div class="tag" id="tag"></div>
+
+
+<section data-page="0"><h2>Do Now: Two Computers, Two Worlds</h2>
+<p>Look at the two computers below. Both can create folders, open programs, and save files. But <b>how do people tell them what to do?</b></p>
+<div class="grid2"><div class="machine-panel"><span class="mini-label">COMPUTER 1 • TEXT INTERFACE</span><div class="terminal"><div>C:\&gt; <span class="cursor">_</span></div><div class="term-muted">Type a command to tell the computer what to do.</div><div>C:\&gt; <span class="term-green">mkdir SCHOOL</span></div><div>C:\&gt; <span class="term-green">dir</span></div><div class="term-muted">&lt;DIR&gt; SCHOOL</div></div><p class="softline">A text-based computer interface, common on PCs in the 1980s.</p></div><div class="machine-panel"><span class="mini-label">COMPUTER 2 • GRAPHICAL INTERFACE</span><div class="desktop-preview"><div class="desktop-icon">📁<small>School</small></div><div class="desktop-icon">🗑️<small>Recycle Bin</small></div><div class="fake-window"><div class="fake-windowbar">File Explorer <span>─ □ ×</span></div><div class="fake-toolbar">Home　 View　 New folder</div><div class="fake-folder">📁 School</div></div><div class="taskbar">⊞　▣　⌕　▥</div></div><p class="softline">A visual interface using windows, icons, and buttons.</p></div></div>
+<div class="paper"><b>Do Now: Compare the computers</b><p>Complete these three prompts in the website.</p><div class="grid2"><div><label for="similarities">1. What is similar about these computers?</label><textarea id="similarities" data-key="similarities" placeholder="Both computers can..." rows="3"></textarea></div><div><label for="differences">2. What is different about how we use them?</label><textarea id="differences" data-key="differences" placeholder="On the first computer..." rows="3"></textarea></div></div><label for="infer">3. What can you infer about how computers have changed?</label><textarea id="infer" data-key="infer" placeholder="I think..." rows="2"></textarea></div>
+<div class="prompt"><b>Think:</b> Which interface would be easier for someone who has never used a computer? Why?</div></section>
+
+<section data-page="1" hidden><h2>Yesterday's Exit Ticket: Missing Packets</h2><div class="note"><b>Quick recap, not a new unit:</b> What if part of a message gets lost on the way?</div>
+<div class="diagram"><div class="packetline"><div class="smallpack good">PACKET<br><strong>1 ✓</strong></div><div class="smallpack good">PACKET<br><strong>2 ✓</strong></div><div class="smallpack bad" id="packetThree">PACKET<br><strong>3 ?</strong></div><div class="smallpack good">PACKET<br><strong>4 ✓</strong></div></div><div class="sim-response" id="packetDialogue">Receiver: “I got 1, 2, and 4. Where's 3?”</div><button type="button" id="resendPacket">Resend packet 3 →</button></div>
+<p>With protocols like <b>TCP</b>, computers can acknowledge received data (<b>ACK</b>), notice missing data, and resend it if necessary. Different protocols handle reliability differently.</p><div class="flow"><div class="node">“Did you get it?”</div><div class="arrow">→</div><div class="node">“Got it!”</div><div class="arrow">↔</div><div class="node">“Send 3 again!”</div></div>
+<div class="prompt"><b>The big idea:</b> The Internet isn't just computers sending data. They communicate and coordinate so information can get where it needs to go.</div><label for="ackQuick">In your own words, why is it useful for computers to communicate back and forth?</label><textarea id="ackQuick" data-key="ackQuick" rows="3"></textarea><p class="softline">Bonus thought: How can a receiver know that data arrived correctly? That leads to error detection, another topic for another day.</p></section>
+
+<section data-page="2" hidden><h2>Part 1: GUIs, From Commands to Clicks</h2>
+<div class="note"><b>GUI</b> (pronounced “gooey”) stands for <b>Graphical User Interface</b>. An <b>interface</b> is how a person interacts with a device or program. A GUI uses windows, icons, pictures, buttons, and menus to make that interaction visual.</div>
+<p><b>Two interfaces, same job:</b> Try making a folder called <b>SCHOOL</b> in each simulation below.</p>
+<div class="grid2"><div class="diagram"><h3 class="topless">Old-school: type a command</h3><div class="terminal terminal-mini" id="cmdOutput"><div>Microsoft MS-DOS</div><div>C:\&gt; <span class="term-muted">(type below)</span></div></div><label for="commandInput">Type a command and press Enter</label><div class="row-flex"><input id="commandInput" type="text" autocomplete="off" spellcheck="false" placeholder="Try: mkdir SCHOOL"><button type="button" id="runCommand">Run</button></div><p class="softline">Hint: <code>mkdir</code> means “make directory” (folder).</p></div><div class="diagram"><h3 class="topless">Modern: click a button</h3><div class="gui-sim"><div class="fake-windowbar">File Explorer <span>─ □ ×</span></div><div class="fake-toolbar"><button type="button" id="makeFolder" class="small-control">+ New folder</button></div><div id="guiFolder" class="gui-folder-placeholder">Your folder will appear here.</div></div><p class="softline">The GUI asks the operating system to create the folder.</p></div></div>
+<div class="success-strip" id="folderStatus" role="status">Try both methods. Watch what happens.</div><div class="prompt"><b>Same outcome, different interface.</b> Clicking a button does not secretly type the <code>mkdir</code> command. Both interfaces request the same kind of operating-system action.</div>
+<label for="guiDefinition">1. What is a GUI?</label><textarea id="guiDefinition" data-key="guiDefinition" rows="2"></textarea><label for="guiExplain">2. What is the difference between a text interface and a graphical interface?</label><textarea id="guiExplain" data-key="guiExplain" rows="2"></textarea><label for="guiThought">3. Are text-based interfaces gone forever? Explain.</label><textarea id="guiThought" data-key="guiThought" rows="2"></textarea></section>
+
+<section data-page="3" hidden><h2>Part 2: Website Anatomy</h2><p>Remember the tools we used in HTMeatbalL and TextBall? Every part had a job.</p>
+<div class="grid3"><div class="concept html"><h3>HTML</h3><b>CONTENT + STRUCTURE</b><p>What is on the webpage?</p><code>&lt;h1&gt;Hi Oz!&lt;/h1&gt;</code></div><div class="concept css"><h3>CSS</h3><b>APPEARANCE</b><p>What does it look like?</p><code>h1 { color: blue; }</code></div><div class="concept js"><h3>JavaScript</h3><b>BEHAVIOR</b><p>What happens when I interact?</p><code>button.onclick = ...</code></div></div>
+<div class="diagram"><h3 class="topless">Try it: Build a tiny website</h3><p>Turn the layers on and off to see what each one contributes.</p><div class="checks-inline"><label><input type="checkbox" id="showHtml" checked> HTML (structure)</label><label><input type="checkbox" id="showCss" checked> CSS (style)</label><label><input type="checkbox" id="showJs" checked> JavaScript (behavior)</label></div><div class="site-preview" id="sitePreview"><div class="preview-site-head" id="previewHead"><h3 id="previewTitle">Oz's Webpage</h3><p id="previewText">Welcome to the Internet According to Oz!</p><button type="button" id="previewButton">Give Oz a treat</button><span id="previewReaction" role="status"></span></div></div><p class="softline">This is a simplified demonstration. In real webpages, HTML provides the elements that CSS and JavaScript work with.</p></div>
+<label for="anatomyQ1">1. What would happen if we removed all the CSS?</label><textarea id="anatomyQ1" data-key="anatomyQ1" rows="2"></textarea><label for="anatomyQ2">2. What would happen if a button had no JavaScript behavior?</label><textarea id="anatomyQ2" data-key="anatomyQ2" rows="2"></textarea></section>
+
+<section data-page="4" hidden><h2>Part 3: What Does a Browser Do?</h2>
+<div class="note">Your <b>browser</b> receives webpage resources, interprets the HTML and CSS, runs JavaScript when appropriate, and <b>renders the webpage</b> you see on screen.</div>
+<div class="diagram"><h3 class="topless">From the Internet to your screen</h3><div class="flow"><div class="node">🌐 Web server</div><div class="arrow">→</div><div class="node">📦 Data travels across the Internet</div><div class="arrow">→</div><div class="node">🧩 Browser interprets HTML, CSS &amp; JS</div><div class="arrow">→</div><div class="node">🖥️ Webpage</div></div></div>
+<h3>Live demonstration: xrayOz</h3><p>Open xrayOz with your teacher. Watch how the HTML, CSS, and JavaScript combine to create Oztagram. The browser interprets the web technologies and renders the result.</p><a class="launch" href="https://mrrobertpino.github.io/xrayoz/" target="_blank" rel="noopener noreferrer">Open xrayOz ↗</a>
+<div class="prompt"><b>Think:</b> When you're looking at a finished webpage, are you looking at the HTML text itself or at something the browser built from that text?</div><label for="browserQ1">1. Explain what a browser does with HTML, CSS, and JavaScript.</label><textarea id="browserQ1" data-key="browserQ1" rows="3"></textarea><label for="browserQ2">2. How does the Internet help your browser display a website hosted somewhere else?</label><textarea id="browserQ2" data-key="browserQ2" rows="3"></textarea></section>
+
+<section data-page="5" hidden><h2>Part 4: From Code to Clicks</h2>
+<div class="note"><b>Here's the connection:</b> You've been using GUIs for weeks! <b>HTMeatbalL</b> and <b>TextBall</b> gave you visual tools to create web content without typing every tag yourself.</div>
+<div class="grid2"><div class="diagram"><h3 class="topless">Write the code</h3><div class="editor-bar">CODE EDITOR <span>index.html</span></div><pre class="code-panel" id="builderCode"></pre><p class="softline">A developer can write instructions as text.</p></div><div class="diagram"><h3 class="topless">Use a visual builder</h3><div class="editor-bar">VISUAL WEBSITE BUILDER <span>Like Wix / Weebly</span></div><div class="builder-controls"><label for="builderTitle">Page heading</label><input id="builderTitle" value="Welcome to OzzyNet"><label for="builderTheme">Page color</label><select id="builderTheme"><option value="blue">Ocean blue</option><option value="green">Meatball green</option><option value="purple">Ozzie purple</option></select><label><input id="builderButton" type="checkbox" checked> Add a clickable button</label></div><div class="builder-live blue" id="builderLive"><h3 id="builderHeading">Welcome to OzzyNet</h3><button type="button" id="builderClick">Click me!</button><p id="builderMessage"></p></div></div></div>
+<div class="prompt"><b>THE BIG IDEA:</b> A visual editor changes <b>how we create a website</b>, not the underlying fact that the browser needs web technologies to display it. Visual builders can generate or manage HTML, CSS, and JavaScript behind the scenes.</div>
+<label for="builderQ1">1. How is HTMeatbalL similar to Wix or Weebly?</label><textarea id="builderQ1" data-key="builderQ1" rows="2"></textarea><label for="builderQ2">2. If you never type a line of HTML, does that mean your website doesn't use code? Explain.</label><textarea id="builderQ2" data-key="builderQ2" rows="3"></textarea></section>
+
+<section data-page="6" hidden><h2>Part 5: Map the Journey</h2><p><b>Mission:</b> Someone in New York opens a webpage hosted on a server in another city. How does the website get from <b>the server to their screen</b>?</p>
+<div class="paper"><b>Put the steps in the correct order.</b><p>Use the ↑ and ↓ buttons to move each step. Then press <b>Check My Journey</b>. If something is wrong, rearrange it and try again.</p></div><div id="journeyItems" class="journey-list" aria-label="Steps in the journey of a website"></div><div class="row-flex" style="margin:16px 0"><button type="button" id="checkJourney">Check My Journey</button><button type="button" id="resetJourney" class="secondary">Shuffle Again</button></div><div class="note" id="journeyStatus" aria-live="polite">Arrange the steps to show how the browser retrieves and displays a webpage.</div>
+<h3>Label the parts of the journey</h3><p>Decide which technology is mainly responsible in each situation.</p><label for="journeyNetwork">1. What part involves routers and packets?</label><select id="journeyNetwork" data-key="journeyNetwork"><option value="">Choose...</option><option>Transporting data across networks</option><option>Styling the colors of the page</option><option>Creating buttons in a visual editor</option></select><label for="journeyBrowser">2. What part turns the website's resources into the page you see?</label><select id="journeyBrowser" data-key="journeyBrowser"><option value="">Choose...</option><option>A network cable</option><option>The web browser</option><option>A router</option></select><label for="journeyGUI">3. What makes the finished webpage easy for a human to interact with?</label><select id="journeyGUI" data-key="journeyGUI"><option value="">Choose...</option><option>The visual interface</option><option>The packet numbers</option><option>The route costs</option></select>
+<label for="journeyExplain">4. Describe the complete journey in your own words. Include <b>server, Internet, packets, routers, browser, HTML, CSS, JavaScript,</b> and <b>GUI</b>.</label><textarea id="journeyExplain" data-key="journeyExplain" rows="6" placeholder="First, the browser... Then... Finally..."></textarea><div class="prompt"><b>Important:</b> The browser sends a request <i>to</i> the server; the server's response travels <i>back</i> to the browser. Data may travel in packets along multiple network paths.</div></section>
+
+<section data-page="7" hidden><h2>Exit Ticket: Tying It All Together</h2><div class="note">Answer on your own. The point of today was to connect several things you already know.</div>
+<label for="exit1">1. What is a GUI? Give one example you've used.</label><textarea id="exit1" data-key="exit1" rows="3"></textarea><label for="exit2">2. What jobs do HTML, CSS, and JavaScript each do?</label><textarea id="exit2" data-key="exit2" rows="3"></textarea><label for="exit3">3. What is the browser's role in displaying a website?</label><textarea id="exit3" data-key="exit3" rows="3"></textarea><label for="exit4">4. How is building a website with Wix or Weebly similar to making a folder with a GUI instead of typing a command?</label><textarea id="exit4" data-key="exit4" rows="4"></textarea></section>
+
+<section data-page="8" hidden><h2>Submit &amp; Save</h2><p>Complete your name and class period. Your work automatically saves <b>in this browser</b> while you type. When finished, submit it to your teacher.</p><div class="grid2"><div><label for="name">First and last name</label><input id="name" data-key="name" autocomplete="name" placeholder="First and last name"></div><div><label for="period">Class period</label><select id="period" data-key="period"><option value="">Choose your period</option><option value="1">Period 1</option><option value="2">Period 2</option><option value="3">Period 3</option><option value="4">Period 4</option><option value="5">Period 5</option><option value="6">Period 6</option><option value="7">Period 7</option><option value="8">Period 8</option><option value="9">Period 9</option></select></div></div><div class="row-flex" style="margin-top:20px"><button type="button" id="submitFirebase">Submit My Work to Firebase</button><button type="button" id="download" class="secondary">Download Answers (.txt)</button><button type="button" id="printBtn" class="secondary">Print / Save PDF</button></div><p id="submitStatus" class="note" role="status" aria-live="polite">Not submitted yet. Your work is saved locally until you submit.</p><div class="paper"><b>Before you leave</b><p>If you see a confirmation number, your work was submitted. If there is a connection or permissions error, download your answers and tell your teacher.</p></div></section>
+</div>
+<div class="footer">
+  <button class="secondary" id="back">← Back</button>
+  <span class="muted" id="progress"></span>
+  <button id="next">Continue →</button>
+</div>
+</div>
+</main>
+
+<script>
+const KEY='oz-together-day4-v1';
+const names=['Do Now','Missing Packets','GUIs','Website Anatomy','Browsers','From Code to Clicks','Map the Journey','Exit Ticket','Submit'];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const journeySteps=[
+ {id:'request',label:'You type a web address. Your browser sends a request for the page.'},
+ {id:'outbound',label:'The request travels across networks to the website’s server.'},
+ {id:'server',label:'The web server sends back the resources the browser needs.'},
+ {id:'network',label:'The response data travels through the Internet in packets via routers.'},
+ {id:'receive',label:'Your computer receives the data and reconstructs the needed information.'},
+ {id:'render',label:'The browser interprets HTML and CSS and runs JavaScript as needed.'},
+ {id:'display',label:'You see the finished webpage and interact with its graphical interface.'}
+];
+let state={page:0,answers:{},journey:['render','request','network','display','server','receive','outbound'],folderText:false,folderGui:false,packetSent:false};
+try{const old=JSON.parse(localStorage.getItem(KEY));if(old){state={...state,...old,answers:old.answers||{}};if(!Array.isArray(state.journey)||state.journey.length!==journeySteps.length)state.journey=['render','request','network','display','server','receive','outbound'];}}catch(e){console.warn('Could not restore saved work',e)}
+function save(){ $$('[data-key]').forEach(e=>{state.answers[e.dataset.key]=e.value});try{localStorage.setItem(KEY,JSON.stringify(state));$('#saveState').textContent='Saved in this browser ✓'}catch(e){$('#saveState').textContent='Autosave unavailable — download backup';}}
+function render(){
+ $$('section[data-page]').forEach((s,i)=>{s.hidden=i!==state.page});
+ $('#tag').textContent='Step '+(state.page+1)+' / '+names.length;
+ $('#progress').textContent=names[state.page];$('#back').disabled=state.page===0;$('#next').hidden=state.page===names.length-1;
+ $('#nav').innerHTML='';names.forEach((name,i)=>{const b=document.createElement('button');b.type='button';b.textContent=(i+1)+' '+name;if(i===state.page)b.setAttribute('aria-current','step');b.onclick=()=>go(i);$('#nav').append(b)});
+ $$('[data-key]').forEach(e=>{e.value=state.answers[e.dataset.key]??''});
+ renderJourney();
+}
+function go(i){save();state.page=Math.max(0,Math.min(names.length-1,i));render();window.scrollTo({top:0,behavior:'smooth'})}
+$$('[data-key]').forEach(e=>{e.addEventListener('input',save);e.addEventListener('change',save)});
+$('#back').onclick=()=>go(state.page-1);$('#next').onclick=()=>go(state.page+1);
+// Quick review: acknowledgment and retransmission example
+$('#resendPacket').onclick=()=>{state.packetSent=!state.packetSent;$('#packetThree').classList.toggle('bad',!state.packetSent);$('#packetThree').classList.toggle('good',state.packetSent);$('#packetThree').innerHTML=state.packetSent?'PACKET<br><strong>3 ✓</strong>':'PACKET<br><strong>3 ?</strong>';$('#packetDialogue').textContent=state.packetSent?'Receiver: “Got packet 3. I have the whole message!”':'Receiver: “I got 1, 2, and 4. Where’s 3?”';$('#resendPacket').textContent=state.packetSent?'Reset example ↺':'Resend packet 3 →';save()};
+if(state.packetSent){$('#packetThree').classList.remove('bad');$('#packetThree').classList.add('good');$('#packetThree').innerHTML='PACKET<br><strong>3 ✓</strong>';$('#packetDialogue').textContent='Receiver: “Got packet 3. I have the whole message!”';$('#resendPacket').textContent='Reset example ↺';}
+// Two ways to make the same folder
+function folderStatus(){let a=state.folderText,b=state.folderGui;$('#folderStatus').textContent=a&&b?'Both methods created a SCHOOL folder. Different interfaces, same kind of result!':a?'Text command worked. Now try the GUI.':b?'GUI worked. Now try the text command.':'Try both methods. Watch what happens.'}
+$('#runCommand').onclick=()=>{const v=$('#commandInput').value.trim();if(/^mkdir\s+school\s*$/i.test(v)){state.folderText=true;$('#cmdOutput').innerHTML='<div>Microsoft MS-DOS</div><div>C:\\&gt; mkdir SCHOOL</div><div>Folder SCHOOL created.</div><div>C:\\&gt; <span class="cursor">_</span></div>';folderStatus();save()}else $('#cmdOutput').innerHTML+='<div>C:\\&gt; '+escapeHTML(v)+'</div><div>Try: mkdir SCHOOL</div>'};
+$('#commandInput').addEventListener('keydown',e=>{if(e.key==='Enter')$('#runCommand').click()});
+$('#makeFolder').onclick=()=>{state.folderGui=true;$('#guiFolder').textContent='📁 SCHOOL';$('#makeFolder').textContent='✓ Folder created';folderStatus();save()};
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+if(state.folderText){$('#cmdOutput').textContent='C:\\> mkdir SCHOOL     Folder SCHOOL created.';}if(state.folderGui){$('#guiFolder').textContent='📁 SCHOOL';$('#makeFolder').textContent='✓ Folder created'}folderStatus();
+// Website anatomy: toggle structure, styling and behavior
+function updateAnatomy(){const h=$('#showHtml').checked,c=$('#showCss').checked,j=$('#showJs').checked;$('#previewHead').hidden=!h;$('#previewHead').classList.toggle('styled',c);$('#previewButton').disabled=!j||!h;$('#previewReaction').textContent='';}['showHtml','showCss','showJs'].forEach(id=>$('#'+id).onchange=updateAnatomy);
+$('#previewButton').onclick=()=>{$('#previewReaction').textContent='  🦴 Woof!'};updateAnatomy();
+// Website GUI builder: visual controls update the rendered preview and show illustrative code
+function updateBuilder(){const title=$('#builderTitle').value||'My Website';const theme=$('#builderTheme').value,withButton=$('#builderButton').checked;$('#builderHeading').textContent=title;$('#builderLive').className='builder-live '+theme;$('#builderClick').hidden=!withButton;$('#builderMessage').textContent='';const colors={blue:'#e3efff',green:'#e8f7e7',purple:'#efe9ff'};$('#builderCode').textContent='<h1>'+title.replace(/</g,'&lt;')+'</h1>\n'+(withButton?'<button id="treat">Click me!</button>\n':'')+'\n/* CSS */\nbody { background: '+colors[theme]+'; }'+(withButton?'\n\n// JavaScript\ntreat.onclick = () => { /* react! */ };':'');}
+['builderTitle','builderTheme','builderButton'].forEach(id=>{$('#'+id).addEventListener('input',updateBuilder);$('#'+id).addEventListener('change',updateBuilder)});$('#builderClick').onclick=()=>$('#builderMessage').textContent='You made something happen with JavaScript!';updateBuilder();
+// Journey sequencing. Use accessible buttons instead of drag-only interactions.
+function renderJourney(){const parent=$('#journeyItems');parent.innerHTML='';state.journey.forEach((id,i)=>{const info=journeySteps.find(s=>s.id===id);const div=document.createElement('div');div.className='journey-item';const number=document.createElement('span');number.className='journey-number';number.textContent=String(i+1);const label=document.createElement('span');label.className='journey-label';label.textContent=info.label;const controls=document.createElement('div');controls.className='journey-controls';const up=document.createElement('button');up.type='button';up.textContent='↑';up.title='Move up';up.setAttribute('aria-label','Move step '+(i+1)+' up');up.className='secondary';up.disabled=i===0;up.onclick=()=>moveJourney(i,-1);const down=document.createElement('button');down.type='button';down.textContent='↓';down.title='Move down';down.setAttribute('aria-label','Move step '+(i+1)+' down');down.className='secondary';down.disabled=i===state.journey.length-1;down.onclick=()=>moveJourney(i,1);controls.append(up,down);div.append(number,label,controls);parent.append(div)});}
+function moveJourney(i,delta){const k=i+delta;if(k<0||k>=state.journey.length)return;[state.journey[i],state.journey[k]]=[state.journey[k],state.journey[i]];renderJourney();$('#journeyStatus').textContent='Keep arranging, then check your work.';save()}
+$('#checkJourney').onclick=()=>{const correct=journeySteps.map(s=>s.id);let count=0;$$('.journey-item').forEach((el,i)=>{const ok=state.journey[i]===correct[i];if(ok)count++;el.classList.toggle('correct',ok);el.classList.toggle('incorrect',!ok)});$('#journeyStatus').textContent=count===correct.length?'All 7 steps are in order! Now explain the journey in your own words.':count+' of 7 steps are in the correct position. Rearrange the others and try again.';save()};
+$('#resetJourney').onclick=()=>{const original=['render','request','network','display','server','receive','outbound'];state.journey=[...original];renderJourney();$('#journeyStatus').textContent='Reset. Try putting the steps in order again.';save()};
+function collectedAnswers(){save();return {...state.answers,journeyOrder:state.journey.map((id,i)=>(i+1)+'. '+journeySteps.find(s=>s.id===id).label).join('\n')}}
+$('#download').onclick=()=>{const answers=collectedAnswers();const lines=['THE INTERNET ACCORDING TO OZ','DAY 4 — TYING IT ALL TOGETHER','Student: '+(answers.name||'Unnamed'),'Class period: '+(answers.period||'Not selected'),'','RESPONSES',''];for(const [key,value] of Object.entries(answers))lines.push(key.toUpperCase()+'\n'+(value||'(blank)')+'\n');const blob=new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=((answers.name||'student').replace(/[^a-z0-9_-]+/gi,'_'))+'_iato_day4.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)};
+$('#printBtn').onclick=()=>window.print();render();save();
+</script>
+<script type="module">
+import {initializeApp} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
+import {getFirestore,collection,addDoc,serverTimestamp} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+const firebaseConfig={apiKey:'AIzaSyAI5fYHq3cRzBCD652aGmvUwKYQc5oTar0',authDomain:'iato4-3ac57.firebaseapp.com',projectId:'iato4-3ac57',storageBucket:'iato4-3ac57.firebasestorage.app',messagingSenderId:'1040322261046',appId:'1:1040322261046:web:9124868ebe5142e0cae897'};
+const app=initializeApp(firebaseConfig),db=getFirestore(app);const submitButton=document.querySelector('#submitFirebase'),status=document.querySelector('#submitStatus');
+submitButton.addEventListener('click',async()=>{const answers=collectedAnswers();const name=(answers.name||'').trim(),period=(answers.period||'').trim();if(!name||!period){status.textContent='Please enter your full name and class period first.';return}submitButton.disabled=true;status.textContent='Submitting to your teacher...';try{const doc=await addDoc(collection(db,'gui_web_journey_day4'),{studentName:name,classPeriod:period,lesson:'Internet According to Oz — Day 4: Tying It All Together',answers,submittedAt:serverTimestamp()});status.textContent='Successfully submitted! Confirmation: '+doc.id;status.style.background='#e8f7ee';}catch(err){console.error('Submission failed',err);status.textContent='Submission FAILED ('+(err.code||'connection error')+'). Your work is still saved on this device. Download Answers (.txt) and tell your teacher.';status.style.background='#fff0ed';}finally{submitButton.disabled=false}});
+</script>
+</body>
+</html>
